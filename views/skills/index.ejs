@@ -12,7 +12,7 @@
     <% if(error) { %>
       <h2><%= error %></h2>
     <% } %>
-    <ul>
+    <ol>
       <% skills.forEach(function(skill) { %>
         <li>
           <a href='/skills/<%= skill._id %>'><%= skill.text %> </a>
@@ -20,7 +20,7 @@
           <%= skill.expert ? 'crackajack' : 'n00b' %>
         </li>
       <% }) %>
-    </ul>
+    </ol>
   </body>
 </body>
 </html>

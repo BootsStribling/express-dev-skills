@@ -5,19 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>Dev Skills</title>
+  <title>Edit Skill</title>
 </head>
 <body>
-  <h1>Skill</h1>
+  <h1>Edit Skill</h1>
   <% if(error) { %>
     <h2><%= error %></h2>
   <% } else { %>
     <h2>Skill #<%= skill._id %></h2>
-    <h3><%= skill.text %></h3>
-    <p>Skill Level: <%= skill.expert ? "crackajack" : "n00b" %></p>
+    <form action="/skills/<%= skill._id %>" method="PATCH" autocomplete="off" class="edit-form">
+      <input type="text" value="<%= skill.text %>"></br>
+      <p>Expert? <input type="checkbox" name="Expert" value ="on"></p></br>
+      <button type="submit">Save Edits</button>
+    </form>
   <% } %>
-
-  <a href="/skills">Go back</a>
-  <a href="<%= skill._id %>/edit">Edit Skill</a>
+  <a href="/skills/<%= skill._id %>">Go back</a>
 </body>
 </html>

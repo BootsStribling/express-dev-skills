@@ -42,7 +42,7 @@ function create(skill, callback) {
 
 function findByIdAndDelete(id,callback){
   try {
-    const idx = skills.findIndex(skill => skill.id == parseInt(id))
+    const idx = skills.findIndex(skill => skill._id === parseInt(id))
     const deletedSkill = skills.splice(idx,1)
     if(!deletedSkill.length) throw new Error ('No skill was deleted')
     return callback(null, deletedSkill[0])
@@ -51,26 +51,26 @@ function findByIdAndDelete(id,callback){
   }
 }
 
-function findByIdAndUpdate(id, update, callback){
-  try{
-    const idx = skills.findIndex(skill => skill.id == parseInt(id))
-    const updatedSkill = skills.splice(idx,1,update)
-    update._id = Date.now() % 1000000
-    return callback(null, updatedSkill[0])
-  }catch(error) {
-    return callback(error,null)
-  }
-}
+// function findByIdAndUpdate(id, update, callback){
+//   try{
+//     const idx = skills.findIndex(skill => skill.id == parseInt(id))
+//     const updatedSkill = skills.splice(idx,1,update)
+//     update._id = Date.now() % 1000000
+//     return callback(null, updatedSkill[0])
+//   }catch(error) {
+//     return callback(error,null)
+//   }
+// }
 
-function enumerateSkills(){
-  skills.forEach(skill => console.log(skill))
-}
+// function enumerateSkills(){
+//   skills.forEach(skill => console.log(skill))
+// }
 
 export { 
   find,
   findById,
   create,
   findByIdAndDelete,
-  findByIdAndUpdate,
-  enumerateSkills
+  // findByIdAndUpdate,
+  // enumerateSkills
 }
